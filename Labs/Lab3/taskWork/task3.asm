@@ -38,6 +38,9 @@ main:
     addi $sp , $sp, -4
     sw $t1 ,0 ($sp)
 
+    addi $sp , $sp, -4
+    sw $ra ,0 ($sp)
+
     move $a0, $t0
     move $a1, $t1
     jal  compute
@@ -45,6 +48,9 @@ main:
     move $t3, $v0
     
     # TODO: Caller-restore step
+    lw $ra, 0 ($sp)
+    addi $sp , $sp, 4
+
     lw $t1, 0 ($sp)
     addi $sp , $sp, 4
 
